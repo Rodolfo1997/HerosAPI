@@ -35,9 +35,9 @@ namespace HerosAPI
         {
 
             services.AddHealthChecks()
-                .AddMongoDb(Configuration["ConnectionStrings:HerosGalleryDB"])
-                .AddMySql(Configuration["ConnectionStrings:DefaultConnection"])
-                .AddRabbitMQ(Configuration["ConnectionStrings:RabbitMq"]);
+                .AddMongoDb(Configuration["ConnectionStrings:HerosGalleryDB"]);
+                //.AddMySql(Configuration["ConnectionStrings:DefaultConnection"])
+                //.AddRabbitMQ(Configuration["ConnectionStrings:RabbitMq"]);
             services.AddHealthChecksUI();
 
             services.AddElmah(options =>
@@ -64,6 +64,8 @@ namespace HerosAPI
                 c.IncludeXmlComments(xmlPath);
 
             });
+
+            services.AddApplicationInsightsTelemetry();
 
         }
 
